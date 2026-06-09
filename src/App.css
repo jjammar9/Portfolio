@@ -1,4 +1,4 @@
-* {
+﻿* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,17 +12,26 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #f5f5eb;
+  scroll-behavior: smooth;
 }
 
 @font-face {
-  font-family: 'Gilroy';
-  src: local('Segoe UI'), local('Arial');
-  font-weight: 800;
+  font-family: 'GT Eesti Display';
+  src: url('/GT_Font/GT-Eesti-Display-Bold-Trial.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT Eesti Text';
+  src: url('/GT_Font/GT-Eesti-Text-Regular-Trial.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
 }
 
 h1, h2, h3, h4, h5, .h1, .h2, .h3 {
-  font-family: "Gilroy", "Segoe UI", Arial, sans-serif;
-  font-weight: 800;
+  font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
   line-height: 1.2;
 }
 
@@ -69,7 +78,6 @@ h2.large, .h2.large {
 
 .global-header__logo {
   margin-left: 2.34375vw;
-  margin-top: .9125vw;
   width: auto;
   display: block;
   float: left;
@@ -78,12 +86,13 @@ h2.large, .h2.large {
 }
 
 .logo-text {
-  font-family: "Gilroy", "Segoe UI", Arial, sans-serif;
-  font-weight: 800;
-  font-size: 1.2em;
-  letter-spacing: -0.5px;
+  position: relative;
+  font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.1em;
+  line-height: 1;
   color: #f5f5eb;
-  text-transform: lowercase;
+  display: inline-block;
 }
 
 .menu-open .logo-text {
@@ -144,7 +153,7 @@ h2.large, .h2.large {
 
 .global-menu ul {
   list-style: none;
-  font-family: "Gilroy", "Segoe UI", Arial, sans-serif;
+  font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
   font-size: 1.5em;
   text-align: center;
 }
@@ -194,8 +203,18 @@ h2.large, .h2.large {
   padding: 8vw;
 }
 
+.section--half__container--center {
+  justify-content: center;
+}
+
+.section--black--blue {
+  background-color: #181717;
+}
+
 .section--black {
-  background: #181717;
+  background-color: #181717;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='1.5' fill='%23F5F5EB' opacity='0.35'/%3E%3Ccircle cx='40' cy='10' r='1.2' fill='%23F5F5EB' opacity='0.25'/%3E%3Ccircle cx='10' cy='40' r='1.2' fill='%23F5F5EB' opacity='0.25'/%3E%3Ccircle cx='40' cy='40' r='1.5' fill='%23F5F5EB' opacity='0.35'/%3E%3C/svg%3E");
+  background-size: 60px 60px;
   color: #f5f5eb;
 }
 
@@ -203,6 +222,18 @@ h2.large, .h2.large {
   width: 100%;
   height: 100%;
   position: relative;
+}
+
+.image-container--video::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background: linear-gradient(to bottom, rgba(24,23,23,0.95), transparent);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .image-container--video video {
@@ -214,60 +245,66 @@ h2.large, .h2.large {
   left: 0;
 }
 
-.watch-video {
-  position: absolute;
-  z-index: 2;
-  bottom: 0;
-  left: 0;
-  display: block;
-  padding: 2.34375vw;
-  color: #f5f5eb;
-  font-weight: 800;
-  font-family: "Gilroy", "Segoe UI", Arial, sans-serif;
-  cursor: pointer;
-}
-
-.watch-video:before {
-  background-image: url("data:image/svg+xml,%3Csvg width='27' height='32' viewBox='0 0 27 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M27 16L-1.4682e-06 31.5885L-1.05412e-07 0.411542L27 16Z' fill='%23F5F5EB'/%3E%3C/svg%3E");
-  display: inline-block;
-  content: '';
-  width: 25px;
-  height: 25px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  vertical-align: middle;
-  margin-right: 25px;
-  transform: translate(0, -3px);
-}
-
 /* ---- ILLUSTRATION ---- */
 .illustration {
   position: absolute;
-  bottom: 2.34375vw;
-  right: 2.34375vw;
-  width: 40%;
-  max-width: 300px;
+  bottom: 0;
+  right: 0;
+  width: 60%;
+  height: auto;
+  max-width: 500px;
   pointer-events: none;
 }
 
 .illustration svg {
-  width: 100%;
+  width: 150%;
   height: auto;
+  transform: translate(-10%, 0%);
+  overflow: visible;
 }
 
 .illustration .circle {
+  border-radius: 100%;
+  background: #DE2826;
   display: block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1px solid #f5f5ea;
   position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 20%;
 }
 
-.illustration .circle-1 { top: 22%; left: 8%; }
-.illustration .circle-2 { top: 42%; left: 38%; }
-.illustration .circle-3 { bottom: 18%; right: 12%; }
+.illustration .circle:after {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+}
+
+.illustration .circle-1 {
+  right: auto;
+  left: -27.5%;
+  width: 47.5%;
+  top: 35%;
+  bottom: auto;
+  background: #DE2826;
+}
+
+.illustration .circle-2 {
+  background: #9FD4CA;
+  right: auto;
+  left: 42.5%;
+  width: 20%;
+  top: 62.5%;
+  bottom: auto;
+}
+
+.illustration .circle-3 {
+  top: 50%;
+  bottom: auto;
+  width: 3%;
+  right: 17.5%;
+  left: auto;
+  background: #F5F5EB;
+}
 
 /* ---- WORDS ANIMATION ---- */
 .words span {
@@ -340,18 +377,54 @@ h2.large, .h2.large {
 }
 
 .section--half__inner {
+  width: 80%;
   max-width: 600px;
+  margin: 0 auto;
 }
 
 .section--half__inner h1 {
-  margin-bottom: 0.5em;
+  font-size: 2.2em;
+  margin-bottom: 0.75em;
+  line-height: 1.15;
+}
+
+.section--half__inner h2.large {
+  font-size: 1.15em;
+  line-height: 1.4;
+  opacity: 0.8;
+}
+
+.animation-delay {
+  animation-delay: 0.3s;
+}
+
+.animation-delay.full {
+  width: 100%;
+}
+
+.fadeInUpSmall {
+  opacity: 0;
+  animation: fadeInUpSmall 0.6s ease forwards;
+}
+
+@keyframes fadeInUpSmall {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.os-animation {
+  opacity: 0;
+}
+
+.os-animation.animated.fadeInUpSmall {
+  opacity: 1;
 }
 
 /* ---- CIRCLE BUTTON ---- */
 .circle-button {
   color: #f5f5eb;
-  font-weight: 800;
-  font-family: "Gilroy", "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
+  font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
   border-radius: 100%;
   position: relative;
   display: inline-flex;
@@ -428,6 +501,176 @@ h2.large, .h2.large {
 .global-footer__info p {
   font-size: 0.75em;
   opacity: 0.7;
+}
+
+/* ---- SECTION TITLE ---- */
+.section__title {
+  margin-bottom: 1em;
+}
+
+/* ---- PROJECTS ---- */
+.section--projects {
+  padding: 8vw;
+  background: #f5f5eb;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 2vw;
+}
+
+.project-card {
+  background: #fff;
+  border: 1px solid #e0e0d8;
+  border-radius: 4px;
+  padding: 2.5vw;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+.project-card__title {
+  margin-bottom: 0.75em;
+}
+
+.project-card__description {
+  font-size: 0.85em;
+  line-height: 1.5;
+  margin-bottom: 1.25em;
+  opacity: 0.8;
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-bottom: 1.25em;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25em 0.6em;
+  font-size: 0.7em;
+  font-weight: 700;
+  font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
+  background: #9fd4ca;
+  color: #181717;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tag--outline {
+  background: transparent;
+  border: 1px solid #f5f5eb;
+  color: #f5f5eb;
+}
+
+.project-link {
+  display: inline-block;
+  font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 0.8em;
+  color: #181717;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid #ffa489;
+  transition: color 0.3s ease;
+}
+
+.project-link:hover {
+  color: #de2826;
+}
+
+/* ---- ABOUT ---- */
+.section--about {
+  padding: 8vw;
+}
+
+.about-inner {
+  max-width: 800px;
+}
+
+.about-bio {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 2em;
+  max-width: 600px;
+}
+
+.highlight.teal {
+  color: #181717;
+}
+
+.highlight.teal:before {
+  background: #9fd4ca;
+}
+
+.about-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.skill-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.skill-category {
+  font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+/* ---- CONTACT ---- */
+.section--contact {
+  padding: 8vw;
+}
+
+.contact-inner {
+  max-width: 600px;
+}
+
+.contact-lede {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 2em;
+}
+
+.contact-links {
+  display: flex;
+  gap: 2em;
+}
+
+.contact-link {
+  font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.1em;
+  color: #181717;
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 2px solid #181717;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #de2826;
+  border-bottom-color: #de2826;
 }
 
 /* ---- RESPONSIVE ---- */

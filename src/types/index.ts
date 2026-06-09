@@ -14,6 +14,18 @@ export interface Project {
   id: string
   title: string
   description: string
+  tags: string[]
   url?: string
-  video?: string
+  github?: string
+  image?: string
+}
+
+export interface Skill {
+  name: string
+  category: string
+}
+
+export interface SocialLink {
+  label: string
+  url: string
 }

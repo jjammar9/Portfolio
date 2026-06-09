@@ -1,8 +1,6 @@
 import { useMenu } from './hooks/useMenu'
 import { Header } from './components/Header'
 import { HeroSection } from './components/HeroSection'
-import { IntroSection } from './components/IntroSection'
-import { Footer } from './components/Footer'
 import './App.css'
 
 function App() {
@@ -13,9 +11,7 @@ function App() {
       <Header menuOpen={menuOpen} onToggleMenu={toggleMenu} />
       <main>
         <HeroSection />
-        <IntroSection />
       </main>
-      <Footer />
     </div>
   )
 }

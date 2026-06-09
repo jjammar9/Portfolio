@@ -10,7 +10,7 @@ interface HeaderProps {
 export function Header({ menuOpen, onToggleMenu }: HeaderProps) {
   return (
     <header className="global-header light">
-      <div className="wrap">
+        <div className="wrap">
         <div className="global-header__logo">
           <Logo />
         </div>

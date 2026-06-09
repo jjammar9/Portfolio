@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+﻿import { useRef, useEffect } from 'react'
 import { SITE } from '../constants/site'
 
 export function HeroSection() {
@@ -21,7 +21,7 @@ export function HeroSection() {
           <span className="watch-video">Watch the video</span>
         </figure>
       </div>
-      <div className="section--half__container section--half__container--content section--black">
+      <div className="section--half__container section--half__container--center section--half__container--content section--black--blue section--black">
         <figure className="illustration illustration-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 907.41 476.68">
             <g id="Layer_2" data-name="Layer 2">
@@ -41,13 +41,18 @@ export function HeroSection() {
           <span className="circle circle-2" />
           <span className="circle circle-3" />
         </figure>
-        <div className="section--half__inner">
-          <h1 className="no-margin-top words animate">
-            <span>This</span>
-            <span>is</span>
-            <span className="highlight"><span>Joey.</span></span>
+        <div className="section--half__inner animation-delay full">
+          <h1 className="no-margin-top words animate animated">
+            <span>I</span>
+            <span>build</span>
+            <span>things</span>
+            <span>that</span>
+            <span className="highlight"><span>make</span></span>
+            <span className="highlight"><span>a</span></span>
+            <span>real</span>
+            <span>difference.</span>
           </h1>
-          <h2 className="h2 large">{SITE.tagline}</h2>
+          <h2 className="h2 large os-animation animated fadeInUpSmall" data-os-animation="fadeInUpSmall">{SITE.tagline}</h2>
         </div>
       </div>
     </section>

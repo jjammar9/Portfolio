@@ -1,4 +1,4 @@
-import type { SiteConfig, NavItem } from '../types'
+import type { SiteConfig, NavItem, Project, Skill, SocialLink } from '../types'
 
 export const SITE: SiteConfig = {
   name: 'this is joey',
@@ -22,3 +22,34 @@ export const COLORS = {
   red: '#DE2826',
   teal: '#9FD4CA',
 } as const
+
+export const PROJECTS: Project[] = [
+  {
+    id: 'portfolio',
+    title: 'Portfolio Website',
+    description:
+      'A personal portfolio site inspired by modern design principles, built with React, TypeScript, and Vite. Features a split-screen hero with video, animated typography, and a minimal aesthetic.',
+    tags: ['React', 'TypeScript', 'Vite', 'CSS'],
+    url: '#',
+    github: 'https://github.com/jjammar9/Portfolio.git',
+  },
+]
+
+export const ABOUT = {
+  bio: "I'm a developer who cares deeply about the craft of building software. I believe great products come from thoughtful design, clean code, and a relentless focus on the people who use them.",
+  skills: [
+    { name: 'React', category: 'Frontend' },
+    { name: 'TypeScript', category: 'Frontend' },
+    { name: 'JavaScript', category: 'Frontend' },
+    { name: 'CSS / Sass', category: 'Frontend' },
+    { name: 'Node.js', category: 'Backend' },
+    { name: 'Python', category: 'Backend' },
+    { name: 'PostgreSQL', category: 'Database' },
+    { name: 'Git', category: 'Tools' },
+  ] as Skill[],
+}
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  { label: 'GitHub', url: 'https://github.com/jjammar9' },
+  { label: 'Email', url: 'mailto:joey@example.com' },
+]
