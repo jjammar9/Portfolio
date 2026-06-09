@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Font files
+*.otf
+public/GT_Font/
+src/assets/GT_Font/
