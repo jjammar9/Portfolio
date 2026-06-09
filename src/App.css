@@ -70,22 +70,24 @@ h2.large, .h2.large {
 .global-header__logo {
   margin-left: 2.34375vw;
   margin-top: .9125vw;
-  width: 120px;
+  width: auto;
   display: block;
   float: left;
   position: relative;
   z-index: 1;
 }
 
-.global-header__logo svg {
-  display: block;
-  width: 100%;
-  height: auto;
+.logo-text {
+  font-family: "Gilroy", "Segoe UI", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 1.2em;
+  letter-spacing: -0.5px;
+  color: #f5f5eb;
+  text-transform: lowercase;
 }
 
-.global-header__logo svg * {
-  fill: #f5f5eb;
-  transition: all 0.4s;
+.menu-open .logo-text {
+  color: #f5f5eb !important;
 }
 
 .menu-toggle {
@@ -419,13 +421,8 @@ h2.large, .h2.large {
   gap: 1.5vw;
 }
 
-.global-footer__logo svg {
-  width: 80px;
-  display: block;
-}
-
-.global-footer__logo svg * {
-  fill: #f5f5eb;
+.global-footer__logo {
+  font-size: 1em;
 }
 
 .global-footer__info p {
