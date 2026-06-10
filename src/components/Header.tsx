@@ -10,16 +10,18 @@ interface HeaderProps {
 export function Header({ view, onNavigate }: HeaderProps) {
   const [delayedDark, setDelayedDark] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const isMobile = useMemo(() => window.innerWidth <= 768, [])
   const isDarkView = useMemo(() => view !== 'home', [view])
 
   useEffect(() => {
-    if (view === 'about') {
+    const panelViews = isMobile ? ['about', 'projects', 'contact'] : ['about']
+    if (panelViews.includes(view)) {
       const timer = setTimeout(() => setDelayedDark(true), 500)
       return () => clearTimeout(timer)
     } else {
       setDelayedDark(false)
     }
-  }, [view])
+  }, [view, isMobile])
 
   const handleNav = (v: string) => {
     onNavigate(v)
