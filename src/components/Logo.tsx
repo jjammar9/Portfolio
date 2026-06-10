@@ -1,11 +1,13 @@
 interface LogoProps {
   className?: string
+  dark?: boolean
+  onClick?: () => void
 }
 
-export function Logo({ className = '' }: LogoProps) {
+export function Logo({ className = '', dark = false, onClick }: LogoProps) {
   return (
-    <span className={`logo-text ${className}`}>
+    <a href="#" className={`logo-text ${className}${dark ? ' logo-text--dark' : ''}`} onClick={(e) => { e.preventDefault(); onClick?.() }}>
       <span className="logo-name">Joey.</span>
-    </span>
+    </a>
   )
 }

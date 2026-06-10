@@ -93,6 +93,11 @@ h2.large, .h2.large {
   line-height: 1;
   color: #f5f5eb;
   display: inline-block;
+  text-decoration: none;
+}
+
+.logo-text--dark {
+  color: #181717;
 }
 
 .global-header__nav {
@@ -113,11 +118,14 @@ h2.large, .h2.large {
   color: #f5f5eb;
   text-decoration: none;
   letter-spacing: 0.02em;
-  transition: opacity 0.3s;
+  padding: 0.15em 0.4em;
+  transition: color 0.3s, background 0.3s;
 }
 
-.global-header__nav ul li a:hover {
-  opacity: 0.6;
+.global-header__nav ul li a:hover,
+.global-header__nav ul li a.active {
+  color: #181717;
+  background: #9fd4ca;
 }
 
 /* ---- SECTIONS ---- */
@@ -139,7 +147,59 @@ h2.large, .h2.large {
 }
 
 .section--half__container--media {
+  background: transparent;
+}
+
+.section--half__container--media-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.panel-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.panel-video {
+  z-index: 1;
   background: #181717;
+}
+
+.panel-content {
+  z-index: 2;
+  transform: translateX(100%);
+}
+
+.panel-content.panel-visible {
+  transform: translateX(0);
+}
+
+.panel-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.panel-slide-in {
+  animation: panelSlideIn 0.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.panel-slide-out {
+  animation: panelSlideOut 0.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes panelSlideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes panelSlideOut {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
 }
 
 .section--half__container--content {
@@ -304,23 +364,6 @@ h2.large, .h2.large {
 .highlight.cream:before { background: #f5f5eb; }
 .highlight:before { background: #9fd4ca; }
 
-/* ---- SECTION FULL ---- */
-.section--full {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
-.section--full__container--content {
-  width: 100%;
-  padding: 8vw;
-}
-
-.section--coral {
-  background: #ffa489;
-  color: #181717;
-}
-
 .section--half__inner {
   width: 80%;
   max-width: 600px;
@@ -368,257 +411,375 @@ h2.large, .h2.large {
   opacity: 1;
 }
 
-/* ---- CIRCLE BUTTON ---- */
-.circle-button {
-  color: #f5f5eb;
-  font-weight: 700;
-  font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
-  border-radius: 100%;
-  position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 160px;
-  height: 160px;
-  text-align: center;
-  font-size: 0.85em;
-  cursor: pointer;
-  margin-top: 2.5vw;
+.section--half__container--media {
+  overflow: hidden;
 }
 
-.circle-button .inner {
+.page-panel-inner {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
+  inset: 0;
   width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
-.circle-button .after {
-  content: '';
-  display: block;
-  width: 160px;
-  height: 160px;
-  background-image: url("data:image/svg+xml,%3Csvg width='180' height='180' viewBox='0 0 180 180' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='90' cy='90' r='89' stroke='%23FFA489' stroke-width='1.25' stroke-dasharray='10 10'/%3E%3C/svg%3E");
-  background-size: 100% 100%;
-  z-index: 1;
-  border-radius: 100%;
+.page-panel-inner--about,
+.page-panel-inner--contact,
+.page-panel-inner--projects {
+  justify-content: flex-start;
+  padding-left: 15%;
 }
 
-.circle-button .before {
-  position: absolute;
-  top: 0;
-  left: -25%;
-  width: 160px;
-  height: 160px;
-  background: #de2826;
-  display: block;
-  border-radius: 100%;
+.page-panel-inner--projects {
+  overflow-y: auto;
 }
 
-.circle-button--2 {
+.page-panel-content {
+  text-align: center;
+}
+
+.page-panel-inner--about .page-panel-content,
+.page-panel-inner--contact .page-panel-content,
+.page-panel-inner--projects .page-panel-content {
+  text-align: left;
+}
+
+.page-panel-inner--contact .page-panel-content {
+  width: 100%;
+  padding-right: 15%;
+}
+
+.page-panel-inner--about .page-panel-heading,
+.page-panel-inner--contact .page-panel-heading,
+.page-panel-inner--projects .page-panel-heading {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+.page-panel-inner--about .page-panel-heading {
+  display: inline-block;
+  background: #181717;
+  color: #fff;
+  padding: 0.15em 0.4em;
+}
+
+.page-panel-inner--contact .page-panel-heading {
+  display: inline-block;
+  background: #fff;
+  color: #9fd4ca;
+  padding: 0.15em 0.4em;
+}
+
+.page-panel-inner--projects .page-panel-heading {
+  display: inline-block;
+  background: #fff;
+  color: #ffa489;
+  padding: 0.15em 0.4em;
+}
+
+.page-panel-heading {
+  color: #fff;
+  font-size: 4em;
+}
+
+.page-panel-heading--dark {
   color: #181717;
 }
 
-.circle-button--2 .after {
-  background-image: url("data:image/svg+xml,%3Csvg width='180' height='180' viewBox='0 0 180 180' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='90' cy='90' r='89' stroke='%23181717' stroke-width='1.25' stroke-dasharray='10 10'/%3E%3C/svg%3E");
+.about-text-content {
+  text-align: left;
+  max-width: 400px;
+  color: #181717;
+  font-size: 0.85em;
+  line-height: 1.6;
+  font-family: "GT Eesti Text", "Segoe UI", Arial, sans-serif;
 }
 
-/* ---- FOOTER ---- */
-.global-footer {
-  padding: 3.125vw;
-  background: #181717;
-  color: #f5f5eb;
-}
-
-.global-footer .wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1.5vw;
-}
-
-.global-footer__logo {
-  font-size: 1em;
-}
-
-.global-footer__info p {
-  font-size: 0.75em;
-  opacity: 0.7;
-}
-
-/* ---- SECTION TITLE ---- */
-.section__title {
+.about-text-content p {
   margin-bottom: 1em;
 }
 
-/* ---- PROJECTS ---- */
-.section--projects {
-  padding: 8vw;
-  background: #f5f5eb;
+.about-text-content p:last-child {
+  margin-bottom: 0;
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 2vw;
-}
-
-.project-card {
-  background: #fff;
-  border: 1px solid #e0e0d8;
-  border-radius: 4px;
-  padding: 2.5vw;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
-}
-
-.project-card__title {
-  margin-bottom: 0.75em;
-}
-
-.project-card__description {
-  font-size: 0.85em;
-  line-height: 1.5;
-  margin-bottom: 1.25em;
-  opacity: 0.8;
-}
-
-.project-card__tags {
+.about-buttons {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
-  margin-bottom: 1.25em;
+  gap: 1em;
+  margin-top: 1.5em;
 }
 
-.tag {
-  display: inline-block;
-  padding: 0.25em 0.6em;
-  font-size: 0.7em;
-  font-weight: 700;
-  font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
-  background: #9fd4ca;
-  color: #181717;
-  border-radius: 3px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.tag--outline {
+.about-btn {
+  position: relative;
   background: transparent;
-  border: 1px solid #f5f5eb;
-  color: #f5f5eb;
-}
-
-.project-link {
-  display: inline-block;
+  border: 2px solid #181717;
+  border-radius: 0;
+  color: #181717;
   font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
   font-weight: 700;
   font-size: 0.8em;
-  color: #181717;
-  text-decoration: none;
-  padding-bottom: 2px;
-  border-bottom: 2px solid #ffa489;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
   transition: color 0.3s ease;
 }
 
-.project-link:hover {
-  color: #de2826;
+.about-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #181717;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+  z-index: -1;
 }
 
-/* ---- ABOUT ---- */
-.section--about {
-  padding: 8vw;
+.about-btn:hover::before {
+  transform: scaleX(1);
 }
 
-.about-inner {
-  max-width: 800px;
+.about-btn:hover {
+  color: #e0e0e0;
 }
 
-.about-bio {
-  font-size: 1.1em;
-  line-height: 1.6;
-  margin-bottom: 2em;
-  max-width: 600px;
+.projects-groups {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  max-width: 450px;
 }
 
-.highlight.teal {
+.projects-group {
+  grid-row: 1;
+  grid-column: 1;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.projects-group--initial {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.projects-group--initial.out {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.projects-group--extra {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.projects-group--extra.in {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.project-item {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 1.5em 0;
+  border-bottom: 1px dashed #181717;
+}
+
+.project-item:first-child {
+  padding-top: 1em;
+}
+
+.project-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.project-logo {
+  font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 70px;
   color: #181717;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 1em;
+  text-align: center;
+  margin-right: 0.4em;
 }
 
-.highlight.teal:before {
-  background: #9fd4ca;
-}
-
-.about-skills {
+.project-info {
   display: flex;
   flex-direction: column;
-  gap: 1.5em;
+  padding-top: 0.15em;
 }
 
-.skill-group {
+.project-title {
+  font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.1em;
+  color: #181717;
+  margin: 0 0 0.2em 0;
+}
+
+.project-desc {
+  font-family: "GT Eesti Text", "Segoe UI", Arial, sans-serif;
+  font-size: 0.8em;
+  color: #181717;
+  margin: 0 0 0.5em 0;
+  line-height: 1.4;
+}
+
+.project-links {
   display: flex;
-  flex-direction: column;
-  gap: 0.5em;
+  gap: 0.6em;
 }
 
-.skill-category {
+.project-btn {
+  position: relative;
+  background: transparent;
+  border: 2px solid #181717;
+  border-radius: 0;
+  color: #181717;
+  font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 0.7em;
+  padding: 0.4em 0.8em;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.project-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #181717;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.project-btn:hover::before {
+  transform: scaleX(1);
+}
+
+.project-btn:hover {
+  color: #ffa489;
+}
+
+.show-more-wrapper {
+  border-top: 1px dashed #181717;
+  padding-top: 1.5em;
+  margin-top: 1.5em;
+}
+
+.show-more-btn {
+  position: relative;
+  background: transparent;
+  border: 2px solid #181717;
+  border-radius: 0;
+  color: #181717;
   font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
   font-weight: 700;
   font-size: 0.75em;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  opacity: 0.5;
+  padding: 0.5em 1.5em;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+  transition: color 0.3s ease;
+  align-self: flex-start;
 }
 
-.skill-list {
+.show-more-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #181717;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.show-more-btn:hover::before {
+  transform: scaleX(1);
+}
+
+.show-more-btn:hover {
+  color: #ffa489;
+}
+
+.contact-form {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
+  flex-direction: column;
+  gap: 1.2em;
+  width: 100%;
 }
 
-/* ---- CONTACT ---- */
-.section--contact {
-  padding: 8vw;
+.contact-form-input,
+.contact-form-textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(0,0,0,0.3);
+  color: #181717;
+  font-family: "GT Eesti Text", "Segoe UI", Arial, sans-serif;
+  font-size: 0.85em;
+  padding: 0.6em 0;
+  outline: none;
+  transition: border-color 0.3s ease;
 }
 
-.contact-inner {
-  max-width: 600px;
+.contact-form-input::placeholder,
+.contact-form-textarea::placeholder {
+  color: #181717;
 }
 
-.contact-lede {
-  font-size: 1.1em;
-  line-height: 1.6;
-  margin-bottom: 2em;
+.contact-form-input:focus,
+.contact-form-textarea:focus {
+  border-bottom-color: #181717;
 }
 
-.contact-links {
-  display: flex;
-  gap: 2em;
+.contact-form-textarea {
+  resize: vertical;
+  min-height: 80px;
 }
 
-.contact-link {
+.contact-form-submit {
+  align-self: flex-start;
+  background: transparent;
+  border: 2px solid #181717;
+  border-radius: 0;
+  color: #181717;
   font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
   font-weight: 700;
-  font-size: 1.1em;
-  color: #181717;
-  text-decoration: none;
-  padding-bottom: 3px;
-  border-bottom: 2px solid #181717;
-  transition: color 0.3s ease, border-color 0.3s ease;
+  font-size: 0.85em;
+  padding: 0.6em 2em;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-.contact-link:hover {
-  color: #de2826;
-  border-bottom-color: #de2826;
+.contact-form-submit:hover {
+  background: #181717;
+  color: #9fd4ca;
+}
+
+/* ---- RIGHT PANEL CONTENT ---- */
+.about-text {
+  font-size: 1.1em;
+  line-height: 1.6;
+  opacity: 0.8;
 }
 
 /* ---- RESPONSIVE ---- */
