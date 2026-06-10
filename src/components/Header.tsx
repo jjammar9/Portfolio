@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { NAV_ITEMS } from '../constants/site'
 import { Logo } from './Logo'
 
@@ -10,6 +10,7 @@ interface HeaderProps {
 export function Header({ view, onNavigate }: HeaderProps) {
   const [delayedDark, setDelayedDark] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const isDarkView = useMemo(() => view !== 'home', [view])
 
   useEffect(() => {
     if (view === 'about') {
@@ -49,7 +50,7 @@ export function Header({ view, onNavigate }: HeaderProps) {
             ))}
           </ul>
         </nav>
-        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+        <button className={`hamburger${isDarkView ? ' hamburger--dark' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
           <span className={`hamburger-line${menuOpen ? ' open' : ''}`} />
           <span className={`hamburger-line${menuOpen ? ' open' : ''}`} />
           <span className={`hamburger-line${menuOpen ? ' open' : ''}`} />

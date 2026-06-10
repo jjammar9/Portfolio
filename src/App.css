@@ -161,6 +161,10 @@ h2.large, .h2.large {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
+.hamburger--dark .hamburger-line {
+  background: #181717;
+}
+
 .mobile-menu {
   display: none;
   position: fixed;
@@ -967,8 +971,8 @@ h2.large, .h2.large {
   }
 
   .page-panel-inner {
-    padding-top: 3em;
-    align-items: flex-start;
+    align-items: center;
+    padding-top: 0;
   }
 
   .page-panel-inner--about,
