@@ -946,14 +946,14 @@ h2.large, .h2.large {
     width: 100%;
     height: 100%;
     z-index: 1;
-    padding: 0;
+    padding: 0 6vw;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .section--half__inner {
-    width: 80%;
+    width: 100%;
     max-width: 100%;
     padding: 0;
   }
