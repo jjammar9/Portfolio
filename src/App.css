@@ -634,6 +634,7 @@ h2.large, .h2.large {
   display: grid;
   grid-template: 1fr / 1fr;
   max-width: 450px;
+  overflow: hidden;
 }
 
 .projects-group {
