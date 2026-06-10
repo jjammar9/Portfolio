@@ -119,8 +119,8 @@ export function PageLayout({ view }: PageLayoutProps) {
                                 <h3 className="project-title">Get Your Ticket</h3>
                                 <p className="project-desc">Short description of the project goes here.</p>
                                 <div className="project-links">
-                                  <button className="project-btn">GitHub</button>
-                                  <button className="project-btn">Live</button>
+                                  <a href="https://github.com/jjammar9/getyourticket" target="_blank" rel="noopener noreferrer" className="project-btn">GitHub</a>
+                                  <a href="https://getyourticket.vercel.app/" target="_blank" rel="noopener noreferrer" className="project-btn">Live</a>
                                 </div>
                               </div>
                             </div>

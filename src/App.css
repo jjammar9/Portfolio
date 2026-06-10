@@ -651,6 +651,7 @@ h2.large, .h2.large {
   z-index: 1;
   overflow: hidden;
   transition: color 0.3s ease;
+  text-decoration: none;
 }
 
 .project-btn::before {
