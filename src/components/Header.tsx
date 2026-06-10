@@ -9,6 +9,7 @@ interface HeaderProps {
 
 export function Header({ view, onNavigate }: HeaderProps) {
   const [delayedDark, setDelayedDark] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     if (view === 'about') {
@@ -19,11 +20,16 @@ export function Header({ view, onNavigate }: HeaderProps) {
     }
   }, [view])
 
+  const handleNav = (v: string) => {
+    onNavigate(v)
+    setMenuOpen(false)
+  }
+
   return (
     <header className="global-header light">
       <div className="wrap">
         <div className="global-header__logo">
-          <Logo dark={delayedDark} onClick={() => onNavigate('home')} />
+          <Logo dark={delayedDark} onClick={() => handleNav('home')} />
         </div>
         <nav className="global-header__nav">
           <ul>
@@ -34,7 +40,7 @@ export function Header({ view, onNavigate }: HeaderProps) {
                   className={view === item.view ? 'active' : ''}
                   onClick={(e) => {
                     e.preventDefault()
-                    onNavigate(item.view)
+                    handleNav(item.view)
                   }}
                 >
                   {item.label}
@@ -43,6 +49,29 @@ export function Header({ view, onNavigate }: HeaderProps) {
             ))}
           </ul>
         </nav>
+        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+          <span className={`hamburger-line${menuOpen ? ' open' : ''}`} />
+          <span className={`hamburger-line${menuOpen ? ' open' : ''}`} />
+          <span className={`hamburger-line${menuOpen ? ' open' : ''}`} />
+        </button>
+      </div>
+      <div className={`mobile-menu${menuOpen ? ' mobile-menu--open' : ''}`}>
+        <ul className="mobile-menu__list">
+          {NAV_ITEMS.map((item) => (
+            <li key={item.href}>
+              <a
+                href={item.href}
+                className={view === item.view ? 'active' : ''}
+                onClick={(e) => {
+                  e.preventDefault()
+                  handleNav(item.view)
+                }}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </header>
   )
