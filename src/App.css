@@ -963,11 +963,11 @@ h2.large, .h2.large {
   }
 
   .section--half__inner h1 {
-    font-size: 1.7em;
+    font-size: 2.38em;
   }
 
   .section--half__inner h2 {
-    font-size: 1em;
+    font-size: 1.4em;
   }
 
   .page-panel-inner {
@@ -994,7 +994,7 @@ h2.large, .h2.large {
 
   .about-text-content {
     max-width: 100%;
-    font-size: 0.8em;
+    font-size: 1.12em;
   }
 
   .about-buttons {
@@ -1003,7 +1003,7 @@ h2.large, .h2.large {
   }
 
   .about-btn {
-    font-size: 0.7em;
+    font-size: 0.98em;
     padding: 0.4em 0.8em;
   }
 
@@ -1017,30 +1017,30 @@ h2.large, .h2.large {
   }
 
   .project-title {
-    font-size: 1em;
+    font-size: 1.4em;
   }
 
   .project-desc {
-    font-size: 0.75em;
+    font-size: 1.05em;
   }
 
   .project-btn {
-    font-size: 0.65em;
+    font-size: 0.91em;
     padding: 0.3em 0.6em;
   }
 
   .show-more-btn {
-    font-size: 0.7em;
+    font-size: 0.98em;
     padding: 0.4em 1.2em;
   }
 
   .contact-form-input,
   .contact-form-textarea {
-    font-size: 0.8em;
+    font-size: 1.12em;
   }
 
   .contact-form-submit {
-    font-size: 0.8em;
+    font-size: 1.12em;
     padding: 0.5em 1.5em;
   }
 }
@@ -1051,7 +1051,7 @@ h2.large, .h2.large {
   }
 
   .project-logo {
-    font-size: 40px;
+    font-size: 56px;
   }
 
   .page-panel-inner--about,
