@@ -952,12 +952,8 @@ h2.large, .h2.large {
     justify-content: center;
   }
 
-  .illustration {
-    display: none;
-  }
-
   .section--half__inner {
-    width: 85%;
+    width: 80%;
     max-width: 100%;
     padding: 0;
   }
