@@ -89,7 +89,7 @@ h2.large, .h2.large {
   position: relative;
   font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
   font-weight: 700;
-  font-size: 1.15em;
+  font-size: 1.4em;
   line-height: 1;
   color: #f5f5eb;
   display: inline-block;
@@ -907,59 +907,67 @@ h2.large, .h2.large {
     display: flex;
   }
 
-  .global-header__nav ul li a {
-    font-size: 1em;
-  }
-
   .section--half {
-    flex-direction: column;
+    position: relative;
     height: 100vh;
     min-height: 0;
   }
 
   .section--half__container {
     width: 100%;
-    height: 50vh;
+    height: auto;
   }
 
   .section--half__container--media {
-    height: 100vh;
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    background: #181717;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: transparent;
+    pointer-events: none;
   }
 
-  .section--half__container--media-overlay {
-    position: relative;
+  .panel-content {
+    pointer-events: auto;
+  }
+
+  .panel-layer {
+    height: 100%;
+  }
+
+  .panel-video {
+    display: none;
   }
 
   .section--half__container--content {
-    position: relative;
-    z-index: 0;
-    height: 100vh;
-    padding: 15vh 6vw 6vw;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    padding: 0;
     display: flex;
     align-items: center;
-  }
-
-  .image-container--video video,
-  .image-container--video::after,
-  .watch-video {
-    display: none;
+    justify-content: center;
   }
 
   .illustration {
     display: none;
   }
 
-  .panel-content {
-    z-index: 3;
+  .section--half__inner {
+    width: 85%;
+    max-width: 100%;
+    padding: 0;
   }
 
-  .panel-layer {
-    height: 100vh;
+  .section--half__inner h1 {
+    font-size: 1.3em;
+  }
+
+  .section--half__inner h2 {
+    font-size: 1em;
   }
 
   .page-panel-inner {
@@ -1035,29 +1043,11 @@ h2.large, .h2.large {
     font-size: 0.8em;
     padding: 0.5em 1.5em;
   }
-
-  .section--half__inner {
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
-  }
-
-  .section--half__inner h1 {
-    font-size: 1.3em;
-  }
-
-  .section--half__inner h2 {
-    font-size: 1em;
-  }
 }
 
 @media (max-width: 480px) {
-  .global-header__nav ul li a {
-    font-size: 0.85em;
-  }
-
-  .logo-text {
-    font-size: 1em;
+  .hamburger {
+    padding: 6px;
   }
 
   .project-logo {
