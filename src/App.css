@@ -72,15 +72,15 @@ h2.large, .h2.large {
 }
 
 .global-header .wrap {
-  padding: 0;
-  position: relative;
+  padding: 0 2.34375vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
 }
 
 .global-header__logo {
-  margin-left: 2.34375vw;
   width: auto;
   display: block;
-  float: left;
   position: relative;
   z-index: 1;
 }
@@ -89,90 +89,35 @@ h2.large, .h2.large {
   position: relative;
   font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
   font-weight: 700;
-  font-size: 1.1em;
+  font-size: 1.15em;
   line-height: 1;
   color: #f5f5eb;
   display: inline-block;
 }
 
-.menu-open .logo-text {
-  color: #f5f5eb !important;
+.global-header__nav {
+  padding-left: 8vw;
 }
 
-.menu-toggle {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: block;
-  width: 24px;
-  height: 20px;
-  margin: 2.34375vw;
-  margin-top: 3.90625vw;
-  z-index: 1;
-}
-
-.menu-toggle span {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: #f5f5eb;
-  position: absolute;
-  transition: all 0.4s;
-}
-
-.menu-toggle span.top { top: 0; }
-.menu-toggle span.middle {
-  top: 50%;
-  transform: translate(0, -2px);
-}
-.menu-toggle span.bottom { bottom: 0; }
-
-.menu-toggle--close span {
-  transform: rotate(45deg);
-  top: 50%;
-  bottom: auto;
-}
-.menu-toggle--close span.middle { opacity: 0; }
-.menu-toggle--close span.bottom { transform: rotate(-45deg); }
-
-.global-menu {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #181717;
-}
-
-.menu-open .global-menu {
+.global-header__nav ul {
+  list-style: none;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 3.5vw;
 }
 
-.global-menu ul {
-  list-style: none;
+.global-header__nav ul li a {
   font-family: "GT Eesti Display", "Segoe UI", Arial, sans-serif;
-  font-size: 1.5em;
-  text-align: center;
-}
-
-.global-menu ul li {
-  margin: 16px 0;
-}
-
-.global-menu ul li a {
+  font-weight: 700;
+  font-size: 1.15em;
   color: #f5f5eb;
-  font-weight: 800;
   text-decoration: none;
-  padding: 5px 8px;
-  transition: all 0.4s;
+  letter-spacing: 0.02em;
+  transition: opacity 0.3s;
 }
 
-.global-menu ul li a:hover {
-  background: #f5f5eb;
-  color: #181717;
+.global-header__nav ul li a:hover {
+  opacity: 0.6;
 }
 
 /* ---- SECTIONS ---- */
@@ -349,7 +294,7 @@ h2.large, .h2.large {
 .highlight span {
   position: relative;
   z-index: 1;
-  color: #f5f5eb;
+  color: #181717;
 }
 
 .highlight.cream span {
@@ -379,13 +324,16 @@ h2.large, .h2.large {
 .section--half__inner {
   width: 80%;
   max-width: 600px;
-  margin: 0 auto;
 }
 
 .section--half__inner h1 {
-  font-size: 2.2em;
+  font-size: 2.8em;
   margin-bottom: 0.75em;
   line-height: 1.15;
+}
+
+.words span {
+  margin-right: 0.25em;
 }
 
 .section--half__inner h2.large {

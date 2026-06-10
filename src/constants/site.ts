@@ -2,7 +2,7 @@ import type { SiteConfig, NavItem, Project, Skill, SocialLink } from '../types'
 
 export const SITE: SiteConfig = {
   name: 'this is joey',
-  tagline: 'I build things that matter.',
+  tagline: 'One detail at a time.',
   description:
     "I'm a developer focused on building clean, thoughtful products. From full-stack apps to polished landing pages — I care about the details that make software feel good to use.",
   copyright: '© 2026 Joey. All rights reserved.',

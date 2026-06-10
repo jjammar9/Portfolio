@@ -14,14 +14,14 @@ export function HeroSection() {
         <figure className="image-container image-container--video">
           <video ref={videoRef} loop playsInline muted autoPlay>
             <source
-              src="https://player.vimeo.com/progressive_redirect/playback/1109643384/rendition/720p/file.mp4?loc=external&log_user=0&signature=9e88394d5b96a0259a56753912acfdba1289865bfb699fea8090f4f2f6828b79"
+              src="https://assets.mixkit.co/videos/1728/1728-1080.mp4"
               type="video/mp4"
             />
           </video>
           <span className="watch-video">Watch the video</span>
         </figure>
       </div>
-      <div className="section--half__container section--half__container--center section--half__container--content section--black--blue section--black">
+      <div className="section--half__container section--half__container--content section--black--blue section--black">
         <figure className="illustration illustration-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 907.41 476.68">
             <g id="Layer_2" data-name="Layer 2">
@@ -44,13 +44,14 @@ export function HeroSection() {
         <div className="section--half__inner animation-delay full">
           <h1 className="no-margin-top words animate animated">
             <span>I</span>
-            <span>build</span>
-            <span>things</span>
-            <span>that</span>
-            <span className="highlight"><span>make</span></span>
-            <span className="highlight"><span>a</span></span>
-            <span>real</span>
-            <span>difference.</span>
+            <span>craft</span>
+            <span>digital</span>
+            <span>experiences</span>
+            <span className="highlight"><span>that</span></span>
+            <span className="highlight"><span>reshape</span></span>
+            <span>how</span>
+            <span>people</span>
+            <span>interact.</span>
           </h1>
           <h2 className="h2 large os-animation animated fadeInUpSmall" data-os-animation="fadeInUpSmall">{SITE.tagline}</h2>
         </div>
