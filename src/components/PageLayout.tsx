@@ -16,6 +16,32 @@ export function PageLayout({ view }: PageLayoutProps) {
   const prevViewRef = useRef(view)
   const nextIdRef = useRef(0)
   const [showAllProjects, setShowAllProjects] = useState(false)
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [submitting, setSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState('')
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubmitting(true)
+    setSubmitStatus('')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      if (res.ok) {
+        setSubmitStatus('Message sent!')
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        setSubmitStatus('Failed to send. Try again.')
+      }
+    } catch {
+      setSubmitStatus('Failed to send. Try again.')
+    } finally {
+      setSubmitting(false)
+    }
+  }
 
   const [panels, setPanels] = useState<Array<{ id: number; view: string; animClass: string }>>(
     () => view !== 'home' ? [{ id: 0, view, animClass: '' }] : []
@@ -96,17 +122,20 @@ export function PageLayout({ view }: PageLayoutProps) {
                       </>
                     ) : panel.view === 'contact' ? (
                       <>
-                        <form className="contact-form">
+                        <form className="contact-form" onSubmit={handleContactSubmit}>
                           <div className="contact-form-field">
-                            <input type="text" id="name" placeholder="Name" className="contact-form-input" required />
+                            <input type="text" id="name" placeholder="Name" className="contact-form-input" required value={formData.name} onChange={e => setFormData(f => ({ ...f, name: e.target.value }))} />
                           </div>
                           <div className="contact-form-field">
-                            <input type="email" id="email" placeholder="Email" className="contact-form-input" required />
+                            <input type="email" id="email" placeholder="Email" className="contact-form-input" required value={formData.email} onChange={e => setFormData(f => ({ ...f, email: e.target.value }))} />
                           </div>
                           <div className="contact-form-field">
-                            <textarea id="message" placeholder="Message" className="contact-form-textarea" rows={5} required></textarea>
+                            <textarea id="message" placeholder="Message" className="contact-form-textarea" rows={5} required value={formData.message} onChange={e => setFormData(f => ({ ...f, message: e.target.value }))}></textarea>
                           </div>
-                          <button type="submit" className="contact-form-submit">Send</button>
+                          <button type="submit" className="contact-form-submit" disabled={submitting}>
+                            {submitting ? 'Sending...' : 'Send'}
+                          </button>
+                          {submitStatus && <p className={`contact-form-status ${submitStatus.includes('sent') ? 'contact-form-status--success' : 'contact-form-status--error'}`}>{submitStatus}</p>}
                         </form>
                       </>
                     ) : (

@@ -27,3 +27,5 @@ dist-ssr
 *.otf
 public/GT_Font/
 src/assets/GT_Font/
+
+.vercel
