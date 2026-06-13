@@ -168,7 +168,7 @@ export function PageLayout({ view }: PageLayoutProps) {
                               <div className="project-logo">B</div>
                               <div className="project-info">
                                 <h3 className="project-title">Buyly</h3>
-                                <p className="project-desc">Short description of the project goes here.</p>
+                                <p className="project-desc">Online shopping platform for seamless product discovery and checkout.</p>
                                 <div className="project-links">
                                   <a href="https://github.com/jjammar9/Buyly" target="_blank" rel="noopener noreferrer" className="project-btn">GitHub</a>
                                   <button className="project-btn">Live</button>
