@@ -165,12 +165,12 @@ export function PageLayout({ view }: PageLayoutProps) {
                               </div>
                             </div>
                             <div className="project-item">
-                              <div className="project-logo">W</div>
+                              <div className="project-logo">B</div>
                               <div className="project-info">
-                                <h3 className="project-title">Weather App</h3>
+                                <h3 className="project-title">Buyly</h3>
                                 <p className="project-desc">Short description of the project goes here.</p>
                                 <div className="project-links">
-                                  <button className="project-btn">GitHub</button>
+                                  <a href="https://github.com/jjammar9/Buyly" target="_blank" rel="noopener noreferrer" className="project-btn">GitHub</a>
                                   <button className="project-btn">Live</button>
                                 </div>
                               </div>
