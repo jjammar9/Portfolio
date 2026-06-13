@@ -114,10 +114,10 @@ export function PageLayout({ view }: PageLayoutProps) {
                           <p>Experienced in developing scalable frontend and backend solutions, collaborating across product and design teams, and delivering performant user-focused applications.</p>
                         </div>
                         <div className="about-buttons">
-                          <button className="about-btn">Resume</button>
-                          <button className="about-btn">LinkedIn</button>
-                          <button className="about-btn">GitHub</button>
-                          <button className="about-btn">Xing</button>
+                          <a href="/joey_amar_cv_english.pdf" download className="about-btn">Resume</a>
+                          <a href="https://www.linkedin.com/in/joey-a-84b12340a" target="_blank" rel="noopener noreferrer" className="about-btn">LinkedIn</a>
+                          <a href="https://github.com/jjammar9" target="_blank" rel="noopener noreferrer" className="about-btn">GitHub</a>
+                          <a href="https://www.xing.com/profile/Joey_amar/web_profiles" target="_blank" rel="noopener noreferrer" className="about-btn">Xing</a>
                         </div>
                       </>
                     ) : panel.view === 'contact' ? (
@@ -154,13 +154,13 @@ export function PageLayout({ view }: PageLayoutProps) {
                               </div>
                             </div>
                             <div className="project-item">
-                              <div className="project-logo">A</div>
+                              <div className="project-logo">M</div>
                               <div className="project-info">
-                                <h3 className="project-title">Another project</h3>
-                                <p className="project-desc">Short description of the project goes here.</p>
+                                <h3 className="project-title">Moudy</h3>
+                                <p className="project-desc">Barber business platform for appointments and services.</p>
                                 <div className="project-links">
-                                  <button className="project-btn">GitHub</button>
-                                  <button className="project-btn">Live</button>
+                                  <a href="https://github.com/jjammar9" target="_blank" rel="noopener noreferrer" className="project-btn">GitHub</a>
+                                  <a href="https://moudy.nl/" target="_blank" rel="noopener noreferrer" className="project-btn">Live</a>
                                 </div>
                               </div>
                             </div>
